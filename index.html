@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Native Career Portfolio</title>
+    <!-- Google Fonts: Inter & Noto Sans KR -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0b10; /* 블랙/딥네이비 */
+            --card-bg: #161b22;
+            --primary-color: #39FF14; /* 형광 그린 */
+            --secondary-color: #0070f3; /* 블루 */
+            --text-main: #ffffff;
+            --text-sub: #8b949e;
+            --nav-bg: rgba(10, 11, 16, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+            background: radial-gradient(circle at center, #112240 0%, #0a0b10 100%);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: var(--text-sub);
+            font-size: 1.2rem;
+        }
+
+        /* Section Styling */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        /* Job Cards */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid #30363d;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary-color);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+        }
+
+        /* Timeline Styling */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--bg-color);
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left { left: 0; }
+        .right { left: 50%; }
+
+        .right::after { left: -10px; }
+
+        .content {
+            padding: 20px 30px;
+            background: var(--card-bg);
+            position: relative;
+            border-radius: 10px;
+        }
+
+        .content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .nav-container { flex-direction: column; }
+            .nav-links { margin-top: 1rem; }
+            .nav-links li { margin: 0 10px; }
+            header h1 { font-size: 2rem; }
+            .timeline::after { left: 31px; }
+            .container { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .container::after { left: 21px; }
+            .right { left: 0%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">AI-Native Developer</div>
+            <ul class="nav-links">
+                <li><a href="#jobs">미래 유망 직무</a></li>
+                <li><a href="#skills">핵심 필수 역량</a></li>
+                <li><a href="#roadmap">나의 4년 로드맵</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Next-Gen AI Portfolio</h1>
+        <p>2026년을 선도하는 AI-Native 백엔드 엔지니어의 비전</p>
+    </header>
+
+    <!-- 섹션 1: 미래 유망 직무 -->
+    <section id="jobs">
+        <h2>Future Promising Jobs</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>AI 가디언 에이전트 전문</h3>
+                <p>자율형 AI 에이전트의 위험 행동을 감시하고 차단하는 보안 체계를 설계합니다. [1]</p>
+            </div>
+            <div class="card">
+                <h3>도메인 특화 컨텍스트 엔지니어</h3>
+                <p>산업별 특화 데이터와 규제 로직을 학습시킨 DSLM을 구축하고 최적화합니다. [1]</p>
+            </div>
+            <div class="card">
+                <h3>AI 네이티브 플랫폼 전문가</h3>
+                <p>SEI 플랫폼을 활용해 초소형 팀의 생산성을 극대화하고 AI 협업 워크플로우를 관리합니다. [1]</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 섹션 2: 핵심 필수 역량 -->
+    <section id="skills">
+        <h2>Core Competencies</h2>
+        <div class="grid-container">
+            <div class="card" style="border-left: 4px solid var(--primary-color);">
+                <h3>AI-Native Engineering</h3>
+                <p>Claude, Cursor 등 AI 에이전트를 활용해 시스템을 조율하고 생산성을 극대화하는 역량입니다. [2]</p>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--primary-color);">
+                <h3>Context & Domain Design</h3>
+                <p>비기술 전문가와 소통하며 Vector DB 및 DSLM에 최적화된 데이터 구조를 설계합니다. [2]</p>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--primary-color);">
+                <h3>AI Governance & Security</h3>
+                <p>AI의 오작동을 막는 보안 가이드라인을 설계하고 '책임 있는 AI' 운영 체계를 구축합니다. [2]</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 섹션 3: 나의 4년 로드맵 (타임라인) -->
+    <section id="roadmap">
+        <h2>My 4-Year Roadmap</h2>
+        <div class="timeline">
+            <div class="container left">
+                <div class="content">
+                    <h3>1학년: AI 리터러시 확보</h3>
+                    <p>Java/Python 기초 학습 및 Cursor 등의 도구를 활용해 AI 생성 코드 검증 습관을 기릅니다. [3]</p>
+                </div>
+            </div>
+            <div class="container right">
+                <div class="content">
+                    <h3>2학년: 백엔드 핵심 기술</h3>
+                    <p>Spring Boot, MySQL을 통한 견고한 백엔드 기반을 다지고 대용량 트래픽 처리 기초를 학습합니다. [3]</p>
+                </div>
+            </div>
+            <div class="container left">
+                <div class="content">
+                    <h3>3학년: AI 인프라 및 LLMOps</h3>
+                    <p>Cloud, Docker, Vector DB를 활용해 지능형 검색 파이프라인을 구축하는 융합자 역량을 확보합니다. [3]</p>
+                </div>
+            </div>
+            <div class="container right">
+                <div class="content">
+                    <h3>4학년: 시스템 아키텍처 완성</h3>
+                    <p>가디언 에이전트 설계 및 다중 에이전트 시스템(MAS) 프로젝트를 통해 시니어급 설계자로 증명합니다. [3]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 50px; color: var(--text-sub); border-top: 1px solid #30363d;">
+        <p>© 2024 My AI-Native Career Path. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
